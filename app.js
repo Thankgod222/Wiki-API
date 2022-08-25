@@ -5,6 +5,8 @@ const bodyParser = require("body-parser");
 const ejs = require("ejs");
 const mongoose = require('mongoose');
 
+const port = process.env.PORT || 3000;
+
 const app = express();
 
 app.set('view engine', 'ejs');
@@ -13,6 +15,8 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 app.use(express.static("public"));
+
+
 
 mongoose.connect("mongodb://localhost:27017/wikiDB", {
     useNewUrlParser: true,
@@ -143,7 +147,7 @@ app.route("/articles/:articleTitle")
         );
     });
 
-const port = process.env.PORT || 3000;
+
 app.listen(port,  () => {
     console.log(`Serving on port ${port}`)
 })
