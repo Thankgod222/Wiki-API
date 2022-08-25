@@ -1,4 +1,4 @@
-//jshint esversion:6
+
 
 const express = require("express");
 const bodyParser = require("body-parser");
@@ -14,7 +14,10 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(express.static("public"));
 
-mongoose.connect("mongodb://localhost:27017/wikiDB", { useNewUrlParser: true });
+mongoose.connect("mongodb://localhost:27017/wikiDB", {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+});
 
 
 const articleSchema = {
