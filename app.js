@@ -1,11 +1,9 @@
-
-
 const express = require("express");
 const bodyParser = require("body-parser");
 const ejs = require("ejs");
 const mongoose = require('mongoose');
 
-const port = process.env.PORT || 3000;
+
 
 const app = express();
 
@@ -14,6 +12,7 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({
     extended: true
 }));
+
 app.use(express.static("public"));
 
 
@@ -147,7 +146,8 @@ app.route("/articles/:articleTitle")
         );
     });
 
+const port = process.env.PORT || 5000;
 
-app.listen(port,  () => {
+app.listen(port,  function () {
     console.log(`Serving on port ${port}`)
 })
